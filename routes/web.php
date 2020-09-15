@@ -8,3 +8,4 @@ $router->post('/token', ['middleware'=>'auth', 'uses'=>'LoginController@onSucces
 $router->post('/insert', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onInsert']);
 $router->post('/select', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onSelect']);
 $router->post('/delete', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onDelete']);
+$router->post('/update', ['middleware'=>'auth', 'uses'=>'PhoneBookController@onUpdate']);
