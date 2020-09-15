@@ -19,7 +19,7 @@ class LoginController extends Controller
             "iss" => "http://example.org",
             "user" => $username,
             "iat" => time(),
-            "exp" => time()+30
+            "exp" => time()+3600
         );
 
         $checkLogin= RegistrationModel::where(['username'=>$username, 'password'=>$passcode])->count();
