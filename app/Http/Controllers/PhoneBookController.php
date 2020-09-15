@@ -38,4 +38,45 @@ class PhoneBookController extends Controller
 
 
     }
+
+
+    function onSelect(Request $req){
+
+        $token= $req->input('token');
+        $key= env('TOKENKEY');
+        $decoded = JWT::decode($token, $key, array('HS256'));
+        $decodeArray= (array) $decoded;
+        
+        $user= $decodeArray['user'];
+        
+
+        $res= PhoneBookModel::where('username', $user)->get();
+
+        return $res;
+
+
+    }
+
+    function onDelete(Request $req){
+
+        $token= $req->input('token');
+        $key= env('TOKENKEY');
+        $decoded = JWT::decode($token, $key, array('HS256'));
+        $decodeArray= (array) $decoded;
+        
+        $user= $decodeArray['user'];
+        
+
+        $res= PhoneBookModel::where('username', $user)->delete();
+
+        if($res == true){
+            return "Delete Successful";
+        }
+        else
+        {
+            return "Failed! Try Again";
+        }
+
+
+    }
 }
