@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    function onSuccess(){
+        return 'Login Token Valid';
+    }
     function onLogin(Request $req){
         $key = env("TOKENKEY"); 
         $username= $req->input('username');
@@ -16,7 +19,7 @@ class LoginController extends Controller
             "iss" => "http://example.org",
             "user" => $username,
             "iat" => time(),
-            "nbf" => time()+3600
+            "exp" => time()+30
         );
 
         $checkLogin= RegistrationModel::where(['username'=>$username, 'password'=>$passcode])->count();

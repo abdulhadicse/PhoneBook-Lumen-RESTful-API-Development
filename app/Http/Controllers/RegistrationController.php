@@ -30,7 +30,7 @@ class RegistrationController extends Controller
                 'username'=>$username,
                 'password'=>$password,
                 'gender'=>$gender,
-                'city'=>$city,
+                'city'=>$city
             ]);
 
             if($res == true){
